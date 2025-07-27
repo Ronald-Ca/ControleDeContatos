@@ -1,12 +1,15 @@
 ﻿@{
 	ViewData["Title"] = "Delete contact";
+	var contact = ViewBag.Contact as ControleDeContatos.Controllers.Contact;
 }
 
 <center>
-	<h3>Do you really want to delete the contact (Ronald)?</h3>
+	<h3>Do you really want to delete the contact (@contact?.Name)?</h3>
 </center>
 
 <center>
-	<a style="width: 100px" role="button" class="btn btn-success">Yes</a>
-	<a style="width: 100px" role="button" class="btn btn-danger">No</a>
+	<form method="post" asp-action="DeleteConfirmed" asp-route-id="@contact?.Id" style="display: inline;">
+		<button type="submit" style="width: 100px" class="btn btn-success">Yes</button>
+	</form>
+	<a style="width: 100px" role="button" class="btn btn-danger" asp-controller="Contact" asp-action="Index">No</a>
 </center>
